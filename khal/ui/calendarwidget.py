@@ -168,6 +168,40 @@ class DateCColumns(urwid.Columns):
              'CColumns is empty, or when set to an invalid index.')
     )
 
+    def mouse_event(self, size, event, button, col, row, focus):
+        """
+        Send event to appropriate column.
+        May change focus on button 1 press.
+        """
+        def is_mouse_press( ev ):
+            return ev.find("press")>=0
+        widths = self.column_widths(size)
+        widths = [4, 3, 3, 3, 3, 3, 3, 3]
+
+
+        x = 0
+        for i in range(len(widths)):
+            if col < x:
+                return False
+            w = self.widget_list[i]
+            end = x + widths[i]
+
+            if col >= end:
+                x = end
+                continue
+
+            focus = focus and self.focus_col == i
+            if is_mouse_press(event) and button == 1:
+                if w.selectable():
+                    self.set_focus(w)
+
+            if not hasattr(w,'mouse_event'):
+                return False
+
+            return w.mouse_event((end-x,) +size[1:], event, button,
+                col - x, row, focus)
+        return False
+
     def keypress(self, size, key):
         """only leave calendar area on pressing 'tab' or 'enter'"""
 
