@@ -117,7 +117,9 @@ def find_vdirs():
         return vdirs
 
 
-def create_vdir(names=[]):
+def create_vdir(names=None):
+    if names is None:
+        names = []
     if not confirm("Do you want to create a local calendar? (You can always "
                    "set it up to synchronize with a server in vdirsyncer "
                    "later)."):
