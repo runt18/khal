@@ -106,7 +106,7 @@ class U_Event(urwid.Text):
                 self.eventcolumn.pane.window.backtrack()
                 self.eventcolumn.pane.window.alert(
                     ('light red',
-                     'Failed to save event: %s' % e))
+                     'Failed to save event: {0!s}'.format(e)))
                 return
 
             self.eventcolumn.pane.window.backtrack()
@@ -585,7 +585,7 @@ class EventEditor(urwid.WidgetWrap):
                 self.pane.window.backtrack()
                 self.pane.window.alert(
                     ('light red',
-                     'Failed to save event: %s' % e))
+                     'Failed to save event: {0!s}'.format(e)))
                 return
 
             self.pane.window.backtrack()
@@ -665,7 +665,7 @@ class ExportDialog(urwid.WidgetWrap):
         lines.append(urwid.Text('Export event as ICS file'))
         lines.append(urwid.Text(''))
         export_location = Edit(caption='Location: ',
-                               edit_text="~/%s.ics" % event.summary.strip())
+                               edit_text="~/{0!s}.ics".format(event.summary.strip()))
         lines.append(export_location)
         lines.append(urwid.Divider(' '))
         lines.append(

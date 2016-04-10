@@ -150,7 +150,7 @@ class DateCColumns(urwid.Columns):
             if day[0].date == a_date:
                 self._set_focus_position(num)
                 return None
-        raise ValueError('%s not found in this week' % a_date)
+        raise ValueError('{0!s} not found in this week'.format(a_date))
 
     def get_date_column(self, a_date):
         """return the column `a_date` is in, raises ValueError if `a_date`
@@ -159,7 +159,7 @@ class DateCColumns(urwid.Columns):
         for num, day in enumerate(self.contents[1:8], 1):
             if day[0].date == a_date:
                 return num
-        raise ValueError('%s not found in this week' % a_date)
+        raise ValueError('{0!s} not found in this week'.format(a_date))
 
     focus_position = property(
         urwid.Columns._get_focus_position,

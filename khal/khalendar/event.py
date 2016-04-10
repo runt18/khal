@@ -78,7 +78,7 @@ class Event(object):
         else:
             self._end = end
         if kwargs:
-            raise TypeError('%s are invalid keyword arguments to this function' % kwargs.keys())
+            raise TypeError('{0!s} are invalid keyword arguments to this function'.format(kwargs.keys()))
 
     @classmethod
     def _get_type_from_vDDD(cls, start):

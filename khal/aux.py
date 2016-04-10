@@ -94,7 +94,7 @@ def weekdaypstr(dayname):
         return 5
     if dayname in ['sunday', 'sun']:
         return 6
-    raise ValueError('invalid weekday name `%s`' % dayname)
+    raise ValueError('invalid weekday name `{0!s}`'.format(dayname))
 
 
 def calc_day(dayname):
