@@ -254,7 +254,7 @@ def import_event(vevent, collection, locale, batch, random_uid):
     else:
         choice = list()
         for num, name in enumerate(collection.writable_names):
-            choice.append('{}({})'.format(name, num))
+            choice.append('{0}({1})'.format(name, num))
         choice = ', '.join(choice)
         while True:
             value = prompt('Which calendar do you want to import to? \n'
@@ -281,4 +281,4 @@ def import_event(vevent, collection, locale, batch, random_uid):
                 collection.force_update(
                     Item(ics.to_ical().decode('utf-8')), collection=calendar_name)
             else:
-                logger.warn(u"Not importing event with UID `{}`".format(event.uid))
+                logger.warn(u"Not importing event with UID `{0}`".format(event.uid))

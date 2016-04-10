@@ -154,7 +154,7 @@ class Event(object):
             elif not isinstance(self.start_local, datetime):
                 return 1
             else:
-                raise ValueError('Cannot compare events {} and {}'.format(self, other))
+                raise ValueError('Cannot compare events {0} and {1}'.format(self, other))
 
     def update_start_end(self, start, end):
         """update start and end time of this event
@@ -283,7 +283,7 @@ class Event(object):
         cn = organizer.params.get('CN', '')
         email = organizer.split(':')[-1]
         if cn:
-            return '{} ({})'.format(cn, email)
+            return '{0} ({1})'.format(cn, email)
         else:
             return email
 
@@ -469,7 +469,7 @@ class Event(object):
         repitition = '\nRepeat: ' + self.recurpattern if \
             self.recurpattern != '' else ''
 
-        return '{}: {}{}{}{}'.format(
+        return '{0}: {1}{2}{3}{4}'.format(
             self._rangestr, self.summary, location, repitition, description)
 
     def duplicate(self):
@@ -587,7 +587,7 @@ class AllDayEvent(Event):
 
     def relative_to(self, day, full=False):
         if self.start > day or self.end < day:
-            raise ValueError('Day out of range: {}'
+            raise ValueError('Day out of range: {0}'
                              .format(dict(day=day, start=self.start,
                                           end=self.end)))
         elif self.start < day and self.end > day:

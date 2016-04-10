@@ -220,14 +220,14 @@ def stringify_conf(conf):
     # really worth it
     out = list()
     for key, value in conf.items():
-        out.append('[{}]'.format(key))
+        out.append('[{0}]'.format(key))
         for subkey, subvalue in value.items():
             if isinstance(subvalue, dict):
-                out.append('  [[{}]]'.format(subkey))
+                out.append('  [[{0}]]'.format(subkey))
                 for subsubkey, subsubvalue in subvalue.items():
-                    out.append('    {}: {}'.format(subsubkey, subsubvalue))
+                    out.append('    {0}: {1}'.format(subsubkey, subsubvalue))
             else:
-                out.append('  {}: {}'.format(subkey, subvalue))
+                out.append('  {0}: {1}'.format(subkey, subvalue))
     return '\n'.join(out)
 
 
@@ -409,7 +409,7 @@ def _get_cli():
                 'longdatetimeformat', 'datetimeformat', 'longdateformat',
                 'dateformat', 'timeformat']:
             dt_str = time.strftime(ctx.obj['conf']['locale'][strftime_format])
-            click.echo('{}: {}'.format(strftime_format, dt_str))
+            click.echo('{0}: {1}'.format(strftime_format, dt_str))
 
     @cli.command()
     @multi_calendar_option

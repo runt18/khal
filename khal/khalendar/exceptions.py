@@ -29,7 +29,7 @@ class UnsupportedRruleExceptionError(UnsupportedFeatureError):
     def __init__(self, message=''):
         x = 'This kind of recurrence exception is currently unsupported'
         if message:
-            x += ': {}'.format(message.strip())
+            x += ': {0}'.format(message.strip())
         UnsupportedFeatureError.__init__(self, x)
 
 

@@ -42,7 +42,7 @@ def validate_int(input, min_value, max_value):
     if min_value <= number <= max_value:
         return number
     else:
-        raise UsageError('Input must be between {} and {}'.format(min_value, max_value))
+        raise UsageError('Input must be between {0} and {1}'.format(min_value, max_value))
 
 
 def choose_datetime_format():
@@ -58,11 +58,11 @@ def choose_datetime_format():
         print("What ordering of year, month, date do you want to use? "
               "(You can choose the separator in the next step)")
         print('\n'.join(
-            ['[{}] {}'.format(num, one) for num, (one, _) in enumerate(ordering_choices)]))
+            ['[{0}] {1}'.format(num, one) for num, (one, _) in enumerate(ordering_choices)]))
         ordering_no = prompt("Please choose one of the above options", value_proc=validate)
         print()
         print("Now, please choose a separator")
-        print('\n'.join(['[{}] {}'.format(num, one) for num, one in enumerate(separator_choices)]))
+        print('\n'.join(['[{0}] {1}'.format(num, one) for num, one in enumerate(separator_choices)]))
         prompt_text = "Please choose one of the above options"
         separator = separator_choices[prompt(prompt_text, value_proc=validate)]
         dateformat = separator.join(ordering_choices[ordering_no][1])
@@ -113,7 +113,7 @@ def find_vdirs():
     else:
         print("The following collections were found:")
         for name, path, _ in vdirs:
-            print('  {}: {}'.format(name, path))
+            print('  {0}: {1}'.format(name, path))
         return vdirs
 
 
@@ -135,7 +135,7 @@ def create_vdir(names=[]):
         if not exists(dirpath) and not isdir(dirpath):
             makedirs(dirpath)
     except OSError as error:
-        print("Could not create directory {} because of {}".format(dirpath, error))
+        print("Could not create directory {0} because of {1}".format(dirpath, error))
         return None
     else:
         return [(name, path, 'calendar')]
@@ -144,7 +144,7 @@ def create_vdir(names=[]):
 def configwizard(dry_run=False):
     config_file = settings.find_configuration_file()
     if not dry_run and config_file is not None:
-        logger.fatal("Found an existing config file at {}.".format(config_file))
+        logger.fatal("Found an existing config file at {0}.".format(config_file))
         logger.fatal(
             "If you want to create a new configuration file, "
             "please remove the old one first. Exiting.")
@@ -187,4 +187,4 @@ longdatetimeformat = {longdateformat} {timeformat}'''.format(
         sys.exit(0)
     with open(config_path, 'w') as config_file:
         config_file.write(config)
-    print("Successfully wrote configuration to {}".format(config_path))
+    print("Successfully wrote configuration to {0}".format(config_path))

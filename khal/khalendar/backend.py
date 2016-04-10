@@ -305,7 +305,7 @@ class SQLiteDb(object):
             event.add('rrule', {'freq': 'YEARLY'})
             if orig_bday:
                 event.add('x-birthday',
-                          '{:04}{:02}{:02}'.format(bday.year, bday.month, bday.day))
+                          '{0:04}{1:02}{2:02}'.format(bday.year, bday.month, bday.day))
                 event.add('x-fname', name)
             event.add('uid', href)
             event_str = event.to_ical().decode('utf-8')

@@ -80,7 +80,7 @@ def get_config(config_path=None):
     if config_path is None or not os.path.exists(config_path):
         raise NoConfigFile()
 
-    logger.debug('using the config file at {}'.format(config_path))
+    logger.debug('using the config file at {0}'.format(config_path))
 
     try:
         user_config = ConfigObj(config_path,
@@ -115,7 +115,7 @@ def get_config(config_path=None):
         else:
             for key in error:
                 if isinstance(error[key], Exception):
-                    logger.fatal('config error:\nin {} {}: {}'.format(
+                    logger.fatal('config error:\nin {0} {1}: {2}'.format(
                         sectionize(section + [subsection]),
                         key,
                         str(error[key]))
@@ -129,7 +129,7 @@ def get_config(config_path=None):
     extras = get_extra_values(user_config)
     for section, value in extras:
         if section == ():
-            logger.warn('unknown section "{}" in config file'.format(value))
+            logger.warn('unknown section "{0}" in config file'.format(value))
         else:
             section = sectionize(section)
             logger.warn('unknown key or subsection "{}" in '

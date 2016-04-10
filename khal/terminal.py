@@ -92,9 +92,9 @@ def colored(string, fg=None, bg=None, bold_for_light_color=True):
                     g = int(colorstring[3:5], 16)
                     b = int(colorstring[5:7], 16)
                 if not is_bg:
-                    color += '38;2;{!s};{!s};{!s}'.format(r, g, b)
+                    color += '38;2;{0!s};{1!s};{2!s}'.format(r, g, b)
                 else:
-                    color += '48;2;{!s};{!s};{!s}'.format(r, g, b)
+                    color += '48;2;{0!s};{1!s};{2!s}'.format(r, g, b)
             color += 'm'
             result += color
     result += string

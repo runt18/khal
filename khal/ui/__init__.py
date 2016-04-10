@@ -145,7 +145,7 @@ class U_Event(urwid.Text):
         if self.event.readonly:
             self.eventcolumn.pane.window.alert(
                 ('light red',
-                 'Calendar {} is read-only.'.format(self.event.calendar)))
+                 'Calendar {0} is read-only.'.format(self.event.calendar)))
             return
 
         if self.uid in self.eventcolumn.pane.deleted[ALL]:
@@ -327,7 +327,7 @@ class EventColumn(urwid.WidgetWrap):
         if event.readonly:
             self.pane.window.alert(
                 ('light red',
-                 'Calendar {} is read-only.'.format(event.calendar)))
+                 'Calendar {0} is read-only.'.format(event.calendar)))
             return
 
         if self.editor:
@@ -437,14 +437,14 @@ class EventDisplay(urwid.WidgetWrap):
             endstr = event.end_local.strftime(self.conf['locale']['dateformat'])
         else:
             startstr = event.start_local.strftime(
-                '{} {}'.format(self.conf['locale']['dateformat'],
+                '{0} {1}'.format(self.conf['locale']['dateformat'],
                                self.conf['locale']['timeformat'])
             )
             if event.start_local.date == event.end_local.date:
                 endstr = event.end_local.strftime(self.conf['locale']['timeformat'])
             else:
                 endstr = event.end_local.strftime(
-                    '{} {}'.format(self.conf['locale']['dateformat'],
+                    '{0} {1}'.format(self.conf['locale']['dateformat'],
                                    self.conf['locale']['timeformat'])
                 )
 
@@ -526,7 +526,7 @@ class EventEditor(urwid.WidgetWrap):
 
     @property
     def title(self):  # Window title
-        return 'Edit: {}'.format(self.summary.get_edit_text())
+        return 'Edit: {0}'.format(self.summary.get_edit_text())
 
     def get_keys(self):
         return [(['arrowsu'], 'navigate through properties'),

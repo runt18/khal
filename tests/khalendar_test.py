@@ -70,7 +70,7 @@ class TestCalendar(object):
 
         print('init')
         for calendar in coll._calendars:
-            print('{}: saved ctag: {}, vdir ctag: {}'.format(
+            print('{0}: saved ctag: {1}, vdir ctag: {2}'.format(
                 calendar, coll._local_ctag(calendar), coll._backend.get_ctag(calendar)))
         assert len(list(vdirs[cal1].list())) == 0
         assert coll._needs_update(cal1) is False
@@ -79,14 +79,14 @@ class TestCalendar(object):
         vdirs[cal1].upload(item_today)
         print('upload')
         for calendar in coll._calendars:
-            print('{}: saved ctag: {}, vdir ctag: {}'.format(
+            print('{0}: saved ctag: {1}, vdir ctag: {2}'.format(
                 calendar, coll._local_ctag(calendar), coll._backend.get_ctag(calendar)))
         assert len(list(vdirs[cal1].list())) == 1
         assert coll._needs_update(cal1) is True
         coll.update_db()
         print('updated')
         for calendar in coll._calendars:
-            print('{}: saved ctag: {}, vdir ctag: {}'.format(
+            print('{0}: saved ctag: {1}, vdir ctag: {2}'.format(
                 calendar, coll._local_ctag(calendar), coll._backend.get_ctag(calendar)))
         assert coll._needs_update(cal1) is False
 
